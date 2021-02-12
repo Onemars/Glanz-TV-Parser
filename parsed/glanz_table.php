@@ -113,7 +113,18 @@ echo "</table>";
 
 
 // second table
-echo '<table class="uk-table uk-table-striped uk-table-hover uk-table-small uk-table-middle uk-text-emphasis">';
+echo '<br>';
+echo '<br>';
+echo '<br>';
+echo '<nav class="uk-navbar-container" uk-navbar>';
+echo '        <div class="uk-navbar-item">';
+echo '            <form class="uk-search uk-search-navbar">';
+echo '               <span uk-search-icon></span>';
+echo '<input class="uk-search-input" type="search" id="myInput2" onkeyup="myFunction()" placeholder="Search for channels.." title="Type in a name">';
+echo '</form>';
+echo '</div>';
+echo '</nav>';
+echo '<table id="table2" class="uk-table uk-table-striped uk-table-hover uk-table-small uk-table-middle uk-text-emphasis">';
 echo   "<thead>";
 echo        "<tr>";
 echo            "<th class=\"uk-table-expand\">Channel Name</th>";
@@ -140,5 +151,27 @@ echo "</table>";
 ?>
 
 </div>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput2");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table2");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+</script>
 
 </html>
